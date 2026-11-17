@@ -20,7 +20,11 @@ describe('about data', () => {
   });
 
   it('uses a rounded duration for ongoing IAM experience', () => {
-    expect(aboutMarkdown).toContain('nearly seven years');
-    expect(aboutMarkdown).not.toContain('six years');
+    expect(aboutMarkdown).toContain('5+ years');
+    expect(aboutMarkdown).not.toContain('nearly seven years');
+  });
+
+  it('does not link to VSCO', () => {
+    expect(aboutMarkdown).not.toMatch(/vsco/i);
   });
 });

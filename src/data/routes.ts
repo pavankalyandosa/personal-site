@@ -23,12 +23,6 @@ const routes: Route[] = [
     path: '/resume',
   },
   {
-    label: 'Photography',
-    path: 'https://vsco.co/kalyan-devv/gallery',
-    external: true,
-    primary: false,
-  },
-  {
     label: 'Contact',
     path: '/contact',
   },
