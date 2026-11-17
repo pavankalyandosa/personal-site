@@ -41,13 +41,8 @@ describe('routes', () => {
     expect(paths).toContain('/resume');
     expect(paths).toContain('/projects');
     expect(paths).toContain('/contact');
-    expect(routes).toContainEqual(
-      expect.objectContaining({
-        label: 'Photography',
-        path: 'https://vsco.co/kalyan-devv/gallery',
-        external: true,
-      }),
-    );
+    expect(routes.map((route) => route.label)).not.toContain('Photography');
+    expect(paths.some((path) => /vsco/i.test(path))).toBe(false);
   });
 
   it('has unique paths', () => {
@@ -77,10 +72,7 @@ describe('routes', () => {
       .filter((route) => route.primary === false)
       .map((route) => route.path);
 
-    expect(secondaryPaths).toEqual([
-      'https://vsco.co/kalyan-devv/gallery',
-      '/projects',
-    ]);
+    expect(secondaryPaths).toEqual(['/projects']);
   });
 
   it('does not publish a Stats destination', () => {

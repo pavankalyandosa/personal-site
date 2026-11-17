@@ -67,16 +67,12 @@ describe('Footer', () => {
     expect(screen.getByText('Connect')).toBeInTheDocument();
   });
 
-  it('renders the external Photography destination safely', () => {
+  it('does not render the removed Photography destination', () => {
     render(<Footer />);
 
-    const photography = screen.getByRole('link', { name: /photography/i });
-    expect(photography).toHaveAttribute(
-      'href',
-      'https://vsco.co/kalyan-devv/gallery',
-    );
-    expect(photography).toHaveAttribute('target', '_blank');
-    expect(photography).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(
+      screen.queryByRole('link', { name: /photography/i }),
+    ).not.toBeInTheDocument();
   });
 
   it('does not render a portrait before one is supplied', () => {
